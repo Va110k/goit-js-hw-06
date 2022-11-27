@@ -9,15 +9,17 @@ const ingredients = [
 
 const elementContainerRef = document.querySelector("#ingredients");
 
-const elements = ingredients.map((nameEl) => {
-  const elemRef = document.createElement("li");
-  elemRef.textContent = nameEl;
-  elemRef.classList.add("item");
+const makeIngredientsEl = (elements) => {
+  return elements.map((nameEl) => {
+    const elemRef = document.createElement("li");
+    elemRef.textContent = nameEl;
+    elemRef.classList.add("item");
 
-  return elemRef;
-});
+    return elemRef;
+  });
+};
+const elements = makeIngredientsEl(ingredients);
 
-console.log(elements);
 elementContainerRef.append(...elements);
 
 // HTML містить порожній список ul#ingredients.
