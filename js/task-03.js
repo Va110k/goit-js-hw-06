@@ -26,13 +26,22 @@ const images = [
 
 const elementContainerRef = document.querySelector(".gallery");
 
-const elements = images.map((nameEl) => {
-  const elemRef = document.createElement("li");
-  elemRef.textContent = nameEl.alt;
-  elemRef.classList.add("item");
+const makeImageGallery = (options) => {
+  return options.map((options) => {
+    const elemRef = document.createElement("li");
 
-  return elemRef;
-});
+    const imageRef = document.createElement("img");
+    imageRef.alt = options.alt;
+    imageRef.src = options.url;
+    imageRef.classList.add("imgOptions");
+    // imageRef.width = 400;
+
+    elemRef.append(imageRef);
+    return elemRef;
+  });
+};
+
+const elements = makeImageGallery(images);
 
 console.log(elements);
 elementContainerRef.append(...elements);
