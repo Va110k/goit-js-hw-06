@@ -26,22 +26,33 @@ const images = [
 
 const elementContainerRef = document.querySelector(".gallery");
 
-const makeImageGallery = (options) => {
-  return options.map((options) => {
-    const elemRef = document.createElement("li");
+// const makeImageGallery = (options) => {
+//   return options.map((options) => {
+//     const elemRef = document.createElement("li");
 
-    const imageRef = document.createElement("img");
-    imageRef.alt = options.alt;
-    imageRef.src = options.url;
-    imageRef.classList.add("imgOptions");
-    // imageRef.width = 400;
+//     const imageRef = document.createElement("img");
+//     imageRef.alt = options.alt;
+//     imageRef.src = options.url;
+//     imageRef.classList.add("imgOptions");
+//     // imageRef.width = 400;
 
-    elemRef.append(imageRef);
-    return elemRef;
-  });
+//     elemRef.append(imageRef);
+//     return elemRef;
+//   });
+// };
+
+// const elements = makeImageGallery(images);
+
+// console.log(elements);
+// elementContainerRef.append(...elements);
+const makeImagesGallery = (imageEl) => {
+  return imageEl.map(
+    (image) =>
+      `<li><img class="list__item" src="${image.url}" alt="${image.alt}"></li>`
+  );
 };
 
-const elements = makeImageGallery(images);
+const createImagesList = makeImagesGallery(images);
+console.log(createImagesList);
 
-console.log(elements);
-elementContainerRef.append(...elements);
+elementContainerRef.insertAdjacentHTML("afterbegin", createImagesList.join(""));
